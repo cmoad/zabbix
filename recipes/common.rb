@@ -9,7 +9,7 @@
 
 # Define root owned folders
 root_dirs = [
-  node['zabbix']['etc_dir'],
+#  node['zabbix']['etc_dir'],
 ]
 
 # Create root folders
@@ -35,17 +35,15 @@ end
 
 # Define zabbix owned folders
 zabbix_dirs = [
-  node['zabbix']['log_dir'],
-  node['zabbix']['run_dir']
+#  node['zabbix']['log_dir'],
+#  node['zabbix']['run_dir']
 ]
 
 # Create zabbix folders
 zabbix_dirs.each do |dir|
   directory dir do
-    unless platform?('windows')
-      owner node['zabbix']['login']
-      group node['zabbix']['group']
-    end
+    owner node['zabbix']['login']
+    group node['zabbix']['group']
     mode '755'
     recursive true
     # Only execute this if zabbix can't write to it. This handles cases of
