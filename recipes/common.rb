@@ -42,8 +42,10 @@ zabbix_dirs = [
 # Create zabbix folders
 zabbix_dirs.each do |dir|
   directory dir do
-    owner node['zabbix']['login']
-    group node['zabbix']['group']
+    unless platform?('windows')
+      owner node['zabbix']['login']
+      group node['zabbix']['group']
+    end
     mode '755'
     recursive true
     # Only execute this if zabbix can't write to it. This handles cases of
