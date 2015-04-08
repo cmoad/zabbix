@@ -23,10 +23,10 @@ def database_exists?(dbname, host, port, root_username, root_password)
   exists = false
   db = nil
   begin
-    db = ::Mysql.new(host, root_username, root_password, dbname, port)
+    db = ::Mysql2::Client.new(host, root_username, root_password, port, dbname)
     exists = true
     Chef::Log.info("Connection to database '#{dbname}' on '#{host}' successful")
-  rescue ::Mysql::Error
+  rescue ::Mysql2::Error
     Chef::Log.info("Connection to database '#{dbname}' on '#{host}' failed")
   ensure
     db.close unless db.nil?
