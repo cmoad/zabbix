@@ -23,7 +23,13 @@ def database_exists?(dbname, host, port, root_username, root_password)
   exists = false
   db = nil
   begin
-    db = ::Mysql2::Client.new(host, root_username, root_password, port, dbname)
+    db = ::Mysql2::Client.new(
+      :host => host,
+      :username => root_username,
+      :password => root_password,
+      :port => port,
+      :database => dbname
+    )
     exists = true
     Chef::Log.info("Connection to database '#{dbname}' on '#{host}' successful")
   rescue ::Mysql2::Error
