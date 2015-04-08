@@ -7,7 +7,6 @@ include_recipe 'zabbix::common'
 mysql_service 'default' do
   version '5.5'
   initial_root_password node['mysql']['server_root_password']
-  socket '/var/run/mysqld/mysqld.sock'
   bind_address '127.0.0.1'
   action [:create, :start]
 end
