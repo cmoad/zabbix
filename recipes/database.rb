@@ -11,6 +11,12 @@ mysql_service 'zabbix' do
   action [:create, :start]
 end
 
+mysql_config 'zabbix' do
+  source 'mysql.cnf.erb'
+  notifies :restart, 'mysql_service[zabbix]'
+  action :create
+end
+
 mysql_client 'zabbix' do
   action :create
 end
