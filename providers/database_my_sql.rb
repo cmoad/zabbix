@@ -61,7 +61,8 @@ def create_new_database
     :host => new_resource.host,
     :port => new_resource.port,
     :username => new_resource.root_username,
-    :password => new_resource.root_password
+    :password => new_resource.root_password,
+    :socket => '/run/mysql-zabbix/mysqld.sock'
   }
 
   zabbix_source 'extract_zabbix_database' do
