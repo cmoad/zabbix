@@ -4,13 +4,10 @@ include_recipe 'zabbix::common'
 
 # include_recipe 'database::mysql'
 # include_recipe 'mysql::client'
-mysql_database 'default' do
-  connection(
-    :host => '127.0.0.1',
-    :username => 'root',
-    :password => node['mysql']['server_root_password'],
-    :socket   => "/var/run/mysql-default/mysqld.sock"
-  )
+mysql_service 'default' do
+  version '5.5'
+  initial_root_password node['mysql']['server_root_password']
+  action [:create, :start]
 end
 
 mysql_client 'default' do
