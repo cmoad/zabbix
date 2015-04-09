@@ -13,7 +13,7 @@ default['zabbix']['web']['php']['settings']    = {
   'max_execution_time'  => '600',
   'max_input_time'      => '600',
   'mysqli.default_socket'=> '/var/run/mysql-zabbix/mysqld.sock',
-  'date.timezone'       => "'UTC'",
+  'date.timezone'       => "'America/New_York'",
 }
 
 default['zabbix']['web']['packages'] = value_for_platform_family(
