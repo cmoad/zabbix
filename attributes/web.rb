@@ -12,7 +12,7 @@ default['zabbix']['web']['php']['settings']    = {
   'upload_max_filesize' => '16M',
   'max_execution_time'  => '600',
   'max_input_time'      => '600',
-  'mysql.default_socket'=> '/var/run/mysql-zabbix/mysqld.sock',
+  'mysqli.default_socket'=> '/var/run/mysql-zabbix/mysqld.sock',
   'date.timezone'       => "'UTC'",
 }
 
