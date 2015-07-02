@@ -102,8 +102,9 @@ def create_new_database
   root_password = "-p'#{new_resource.root_password}'"
   host = "-h #{new_resource.host}"
   port = "-P #{new_resource.port}"
+  socket = "--socket=#{new_resource.socket}"
   dbname = new_resource.dbname
-  sql_command = "#{executable} #{root_username} #{root_password} #{host} #{port} #{dbname}"
+  sql_command = "#{executable} #{root_username} #{root_password} #{host} #{port} #{socket} #{dbname}"
 
   zabbix_path = ::File.join(new_resource.source_dir, "zabbix-#{new_resource.server_version}")
   sql_scripts = if new_resource.server_version.to_f < 2.0
